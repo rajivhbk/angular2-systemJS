@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<base href="/">
+	<title>Angular 2 QuickStart</title>
+	<link rel="stylesheet" href="app/assets/styles/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="app/assets/fonts/font-awesome.min.css">-->
+	<!--<style>
+		body {
+			padding: 30px;
+		}
+	</style>-->
+	<!-- 1. Load libraries -->
+	<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+	<script src="node_modules/rxjs/bundles/Rx.js"></script>
+	<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script src="node_modules/angular2/bundles/router.dev.js"></script>
+	<script src="node_modules/angular2/bundles/http.dev.js"></script>
+
+	<!-- 2. Configure SystemJS -->
+	<script>
+      System.config({
+        packages: {        
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+
+<body>
+	<my-app>Loading...</my-app>
+</body>
+<style type="text/css">
+	@font-face {
+		font-family: 'Glyphicons Halflings';
+		src: url('app/assets/fonts/glyphicons-halflings-regular.eot');
+	}
+</style>
+</style>
+
+</html>

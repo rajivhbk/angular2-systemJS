@@ -1,0 +1,46 @@
+<h1>Posts</h1>
+
+<div class="col-sm-6">
+    <select class="form-control" #u (change)="filterPosts({ userId: u.value})" name="users" id="users">
+        <option value="">Select a user</option>
+        <option *ngFor="#user of _users" value="{{user.id}}">{{user.name}}</option>
+    </select>
+    <br>
+    <pagination [items]="_posts" (page-changed)="onPageChaged($event)"></pagination>
+    <loader [loading]="_postsLoading"></loader>
+    <ul class="list-group posts">
+        <li class="list-group-item"
+        (click)="getPost(post)"
+        [class.active]="_post.id == post.id"
+        *ngFor="#post of _pagedPosts">
+            <!--<a (click)="getPost(post.id)">-->
+                {{post.title}}
+            <!--</a>-->
+        </li>
+    </ul>
+</div>
+
+<div class="col-sm-6" *ngIf="_post.id">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{_post.title}}</div>
+      <div class="panel-body">{{_post.body}}</div>
+       <hr *ngIf="_post.comments"/>
+    <div>
+        <loader [loading]="_commentsLoading"></loader>
+        <div class="media" *ngFor="#comment of _post.comments">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    {{ comment.name }}
+                </h4> 
+                {{ comment.body }}
+            </div>
+        </div>
+    </div>
+    </div>
+   
+</div>
